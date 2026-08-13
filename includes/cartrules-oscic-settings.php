@@ -24,11 +24,7 @@ function cartrules_oscic_settings_fields( $settings, $section_id ) {
 		array(
 			'title' => __( 'One Shipping Class in Cart', 'cartrules-one-shipping-class-in-cart-for-woocommerce' ),
 			'type'  => 'title',
-			/* translators: %s: link to the CartRules PRO plugin page. */
-			'desc'  => sprintf(
-				__( 'Prevent customers from mixing products with different shipping classes in the same cart. Need to restrict the cart by product, category, tag, brand, or cart total instead? Check out %s.', 'cartrules-one-shipping-class-in-cart-for-woocommerce' ),
-				'<a href="https://cartrules.com/" target="_blank" rel="noopener noreferrer">CartRules PRO</a>'
-			),
+			'desc'  => __( 'Prevent customers from mixing products with different shipping classes in the same cart.', 'cartrules-one-shipping-class-in-cart-for-woocommerce' ),
 			'id'    => 'cartrules_oscic_settings_title',
 		),
 		array(

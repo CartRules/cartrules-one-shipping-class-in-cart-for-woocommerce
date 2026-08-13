@@ -20,8 +20,6 @@ Once activated, go to WooCommerce > Settings > CartRules > One Shipping Class in
 
 Works with both the classic, shortcode-based cart and checkout, and the newer WooCommerce Cart and Checkout blocks.
 
-Need to restrict the cart in a different way, such as by product, category, tag, brand, or cart total? Check out [CartRules PRO](https://cartrules.com/).
-
 == Frequently Asked Questions ==
 
 = What happens to products with no shipping class assigned? =
