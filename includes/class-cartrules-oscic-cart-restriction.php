@@ -63,7 +63,7 @@ class CartRules_OSCIC_Cart_Restriction {
 			return true;
 		}
 
-		wc_add_notice( $this->build_message( 'cartrules_oscic_deny_message', $existing_class_name ), 'error' );
+		wc_add_notice( $this->build_deny_message( $existing_class_name ), 'error' );
 
 		return false;
 	}
@@ -87,13 +87,25 @@ class CartRules_OSCIC_Cart_Restriction {
 			WC()->cart->remove_cart_item( $conflicting_item_key );
 		}
 
-		wc_add_notice( $this->build_message( 'cartrules_oscic_replace_message', $replacement['shipping_class_name'] ), 'notice' );
+		wc_add_notice( $this->build_replace_message( $replacement['shipping_class_name'] ), 'notice' );
 	}
 
-	private function build_message( $option_id, $shipping_class_name ) {
-		$message = get_option( $option_id );
+	/**
+	 * The message options are only ever written to the database when the settings screen is
+	 * saved, so get_option() needs the same fallback the settings screen shows in the
+	 * textarea by default -- otherwise enabling this via wp_cli/wp option update, or a site
+	 * migration that drops the option row, silently produces a blank notice.
+	 */
+	private function build_deny_message( $shipping_class_name ) {
+		$default = __( 'You already have products with the "{shipping_class}" shipping class in your cart. Please remove them first, or complete that order separately.', 'cartrules-one-shipping-class-in-cart-for-woocommerce' );
 
-		return str_replace( '{shipping_class}', $shipping_class_name, $message );
+		return str_replace( '{shipping_class}', $shipping_class_name, get_option( 'cartrules_oscic_deny_message', $default ) );
+	}
+
+	private function build_replace_message( $shipping_class_name ) {
+		$default = __( 'Your cart contained products with the "{shipping_class}" shipping class, so we replaced them with your new selection.', 'cartrules-one-shipping-class-in-cart-for-woocommerce' );
+
+		return str_replace( '{shipping_class}', $shipping_class_name, get_option( 'cartrules_oscic_replace_message', $default ) );
 	}
 
 	/**
