@@ -2,7 +2,7 @@
 /**
  * Plugin Name:          CartRules One Shipping Class in Cart for WooCommerce
  * Description:          Restrict the WooCommerce cart to products from a single shipping class at a time.
- * Version:              1.0.1
+ * Version:              1.0.2
  * Requires at least:    6.5
  * Requires PHP:         7.4
  * Requires Plugins:     woocommerce
