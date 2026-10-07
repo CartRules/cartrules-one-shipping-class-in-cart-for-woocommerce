@@ -1,0 +1,70 @@
+{
+    "product_id": 258426,
+    "best": "hero",
+    "pairs_with": [
+        "cartrules-one-category-in-cart-for-woocommerce",
+        "cartrules-one-brand-in-cart-for-woocommerce"
+    ],
+    "shots": [
+        {
+            "name": "hero",
+            "url": "/cart/",
+            "selector": ".wp-block-woocommerce-cart",
+            "pad": 24,
+            "viewport": [
+                1400,
+                900
+            ],
+            "settle": 3500,
+            "css": "#coming-soon-footer-banner{display:none!important}",
+            "actions": [
+                {
+                    "goto": "/?add-to-cart=338"
+                },
+                {
+                    "goto": "/?add-to-cart=339"
+                }
+            ],
+            "seed": {
+                "options": {
+                    "cartrules_oscic_enabled": "yes"
+                },
+                "php": "$__names = array(338 => array('Heavy Table Lamp', '36.00'), 339 => array('Heavy Oak Stool', '72.00')); foreach ($__names as $__id => $__data) { list($__n, $__price) = $__data; $__existing = get_post($__id); if (!$__existing || $__existing->post_title !== $__n) { $__p = new WC_Product_Simple(); $__p->set_name($__n); $__id = $__p->save(); } $__prod = wc_get_product($__id); $__prod->set_regular_price($__price); $__prod->set_shipping_class_id(24); $__prod->save(); } WC()->cart->empty_cart();"
+            }
+        },
+        {
+            "name": "top",
+            "slot": "row",
+            "url": "/wp-admin/admin.php?page=wc-settings&tab=cartrules&section=oscic",
+            "selector": [
+                "tr:has(#cartrules_oscic_enabled)",
+                "tr:has(#cartrules_oscic_mode)"
+            ],
+            "pad": 20,
+            "viewport": [
+                900,
+                500
+            ],
+            "settle": 1200
+        },
+        {
+            "name": "bottom",
+            "slot": "row",
+            "url": "/wp-admin/admin.php?page=wc-settings&tab=cartrules&section=oscic",
+            "selector": [
+                "tr:has(#cartrules_oscic_deny_message)",
+                "tr:has(#cartrules_oscic_replace_message)"
+            ],
+            "pad": 20,
+            "viewport": [
+                900,
+                700
+            ],
+            "settle": 1200
+        }
+    ],
+    "hero": {
+        "layout": "single",
+        "shot": "hero"
+    }
+}
